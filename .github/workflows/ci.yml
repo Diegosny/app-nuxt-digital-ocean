@@ -8,12 +8,7 @@ on:
 
 jobs:
   ci:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [lts/*]
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout 🛎
@@ -44,3 +39,12 @@ jobs:
 
       - name: Run tests 🧪
         run: yarn test
+
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v21
+        with: 
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
+          aplication_name: marketplace-staging
+          environment_name: Marketplace-staging
+          region: us-east-1
