@@ -6,7 +6,7 @@
         app-nuxt
       </h1>
       <h2 class="subtitle">
-        Welcome to the View UI + Nuxt.js template
+        Aplicação criada em nuxts para minhas praticas de devOps. Implementando um CI/CD e um serviço em nuvem que e a digital ocean
       </h2>
       <div class="links">
         <Button type="primary" target="_blank" rel="noopener noreferrer" to="https://nuxtjs.org/">
