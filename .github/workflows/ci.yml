@@ -50,5 +50,6 @@ jobs:
           application_name: aplication-teste
           environment_name: Nuxts-app-teste
           version_label: ${{ github.sha }}
+          deployment_package: deploy.zip
           region: us-east-1
           use_existing_version_if_available: true
