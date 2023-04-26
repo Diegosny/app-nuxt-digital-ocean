@@ -51,3 +51,4 @@ jobs:
           environment_name: Aplication-teste-env
           version_label: ${{ github.sha }}
           deployment_package: deploy.zip
+          region: us-east-1
