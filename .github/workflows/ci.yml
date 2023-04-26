@@ -47,8 +47,8 @@ jobs:
         with: 
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-          application_name: aplication-teste
-          environment_name: Nuxts-app-teste
+          application_name: app-teste-nuxt
+          environment_name: App-teste-nuxt-env
           version_label: ${{ github.sha }}
           deployment_package: deploy.zip
           region: us-east-1
