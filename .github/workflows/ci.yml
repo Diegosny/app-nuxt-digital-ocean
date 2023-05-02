@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: Setup node env 🏗
-        uses: actions/setup-node@v3.0.0
+        uses: actions/setup-node@v3.0.0 
         with:
           node-version: ${{ matrix.node }}
           check-latest: true
@@ -36,20 +36,19 @@ jobs:
       - name: Install dependencies 👨🏻‍💻
         run: yarn
 
-      - name: Generate ZIP
-        run: zip -r deploy.zip . -x "node_modules/*"
-
       - name: Run tests 🧪
         run: yarn test
 
+      - name: Generate deployment package
+        run: zip -r deploy.zip . -x '*.git*'
+  
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v21
-        with: 
+        with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-          application_name: app-nuxts-teste
-          environment_name: App-nuxts-teste-env
-          version_label: version:1.0
-          deployment_package: deploy.zip
+          application_name: braip-marketplace-staging
+          environment_name: braip-marketplace-staging
+          version_label: ${{github.SHA}}
           region: us-east-1
-          use_existing_version_if_available: true
+          deployment_package: deploy.zip
